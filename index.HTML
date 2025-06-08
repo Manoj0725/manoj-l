@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Friendship Test</title>
+
+  <link rel="stylesheet" href="style.css/style.css">
+</head>
+<body>
+ 
+    
+  <!-- Add your test questions and content here -->
+</body>
+</html>
+<!-- ...rest of your code... -->
+<a href="https://instagram.com/https.yomanoj" target="_blank" class="instagram-link">
+  Visit my Instagram
+</a>
+
+<form action="https://www.google.com/search" method="GET" target="_blank">
+  <input type="text" name="q" placeholder="Search Google..." required>
+  <button type="submit">Search</button>
+</form>
+
+<h1><b>friendship test</b></h1>
+<div class="question-block">
+  DO YOU WANT TO BE MY FRIEND?
+</div>
+<button type="button" onclick="vote('yes')">Yes</button>
+<button type="button" onclick="vote('no')">No</button>
+<p id="result">Yes: 0% (0), No: 0% (0)</p>
+
+<div id="popup" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(255,228,236,0.8); z-index:1000; justify-content:center; align-items:center;">
+  <span id="popup-content" style="font-size:7rem;"></span>
+</div>
+
+<img id="thanks-img" src="IMG_2097.jpg" alt="Manoj" style="width:100px; height:100px; border-radius:50%; margin-top:16px;">
+
+<script>
+  let yesCount = 0;
+  let noCount = 0;
+
+  function showPopup(content) {
+    const popup = document.getElementById('popup');
+    const popupContent = document.getElementById('popup-content');
+    popupContent.innerHTML = content;
+    popup.style.display = 'flex';
+    setTimeout(() => {
+      popup.style.display = 'none';
+    }, 1500);
+  }
+
+  function vote(answer) {
+    if (answer === 'yes') {
+      yesCount++;
+      showPopup('&#10084;&#65039;');
+      document.getElementById('popup-content').style.color = '#ff69b4';
+      document.getElementById('popup-content').style.textShadow = '0 0 40px #ffb6d5';
+      setTimeout(() => {
+        window.location.href = "friendship.html";
+      }, 1500); // Open new page after popup disappears
+    } else {
+      noCount++;
+      showPopup('😢');
+      document.getElementById('popup-content').style.color = '#b8005c';
+      document.getElementById('popup-content').style.textShadow = 'none';
+    }
+    const total = yesCount + noCount;
+    const yesPercent = total ? Math.round((yesCount / total) * 100) : 0;
+    const noPercent = total ? Math.round((noCount / total) * 100) : 0;
+    document.getElementById('result').textContent =
+      `Yes: ${yesPercent}% (${yesCount}), No: ${noPercent}% (${noCount})`;
+  }
+</script>
+</body>
+</html>
